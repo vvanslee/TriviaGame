@@ -19,7 +19,7 @@
   				<div class="panel-body">
     				<div class="row">
 						<div class="col-xs-12">
-							HEADER
+							TRIVIA GAME!
 						</div>
 					</div>
 					<div class="row">
@@ -114,11 +114,15 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="submitter">
+				<form action="score.html">
         		<input class="quizSubmit" id="submitButton" onClick="submitQuiz()" type="submit" value="Submit" />
+        		</form>
     		</div>
 		</div>
 	</div>
 	<br>
+
+
 	<!--show only wrong answers on submit-->
     <div class="quizAnswers" id="correctAnswer1"></div>
 	<div class="quizAnswers" id="correctAnswer2"></div>
@@ -127,9 +131,11 @@
 
 <!--show score upon submit-->
     <div>
-    	<h2 class="quizScore" id="userScore"></h2>
+    	<!-- <h2 class="quizScore" id="userScore"></h2> -->
     </div>
     <br>
+
+    
 </div>
 	
 </body>

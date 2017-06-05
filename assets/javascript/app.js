@@ -45,27 +45,17 @@
       document.getElementById('correctAnswer4').innerHTML = correctAnswer('correctString4', 4);
     }
 
-  // calculate "possible score" integer
-    var questionCountArray = document.getElementsByClassName('question');
+  // show score
+    var showScore = "ANSWERED CORRECT: " + calcScore;
+    // document.getElementById('userScore').innerHTML = showScore;
+    $('.quizScore').html(calcScore);
 
-    var questionCounter = 0;
-    for (var i = 0, length = questionCountArray.length; i < length; i++) {
-      questionCounter++;
-    }
-
-  // show score as "score/possible score"
-    var showScore = "Your Score: " + calcScore +"/" + questionCounter;
-  // if 4/4, "perfect score!"
-    if (calcScore === questionCounter) {
-      showScore = showScore + "&nbsp; <strong>Perfect Score!</strong>"
-    };
-    document.getElementById('userScore').innerHTML = showScore;
   }
 
-$(document).ready(function() {
+  $(document).ready(function() {
 
   $('#submitButton').click(function() {
-    $(this).addClass('hide');
+  $(this).addClass('hide');
   });
 
 });
