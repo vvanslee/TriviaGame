@@ -102,7 +102,11 @@ function resetQuiz() {
 
 function displayScore() {
     $(document).find(".quizContainer > .result").text("You scored: " + correctAnswers + " out of: " + questions.length);
+    $(document).find(".quizContainer > .incorrect").text("You scored: " + correctAnswers + " out of: " + questions.length);
+    $(document).find(".quizContainer > .unanswered").text("You scored: " + correctAnswers + " out of: " + questions.length);
     $(document).find(".quizContainer > .result").show();
+    $(document).find(".quizContainer > .incorrect").show();
+    $(document).find(".quizContainer > .unanswered").show();
 }
 
 function hideScore() {

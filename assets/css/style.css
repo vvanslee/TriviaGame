@@ -77,4 +77,22 @@ p {
     text-align: center;
     font-family:'Rokkitt', serif;
 }
+.incorrect {
+    width: 30%;
+    height: auto;
+    border-radius: 6px;
+    background-color: linen;
+    margin: auto;
+    text-align: center;
+    font-family:'Rokkitt', serif;
+}
+.unanswered {
+    width: 30%;
+    height: auto;
+    border-radius: 6px;
+    background-color: linen;
+    margin: auto;
+    text-align: center;
+    font-family:'Rokkitt', serif;
+}
 /* End of Quiz Classes */
