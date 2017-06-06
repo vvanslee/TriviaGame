@@ -23,13 +23,14 @@ var questions = [{
 
 var currentQuestion = 0;
 var correctAnswers = 0;
+var incorrectAnswers = 0;
+var noAnswers = 0;
 var quizOver = false;
 
 $(document).ready(function () {
 
     // Display the first question
     displayCurrentQuestion();
-    $(this).find(".quizMessage").hide();
 
     // On clicking next, display the next question
     $(this).find(".nextButton").on("click", function () {
@@ -38,28 +39,25 @@ $(document).ready(function () {
             value = $("input[type='radio']:checked").val();
 
             if (value == undefined) {
-                $(document).find(".quizMessage").text("Please select an answer");
-                $(document).find(".quizMessage").show();
-            } else {
-                // TODO: Remove any message -> not sure if this is efficient to call this each time....
-                $(document).find(".quizMessage").hide();
-
-                if (value == questions[currentQuestion].correctAnswer) {
-                    correctAnswers++;
-                }
-
+                noAnswers++;
                 currentQuestion++; // Since we have already displayed the first question on DOM ready
-                if (currentQuestion < questions.length) {
-                    displayCurrentQuestion();
-                } else {
-                    displayScore();
-                    //                    $(document).find(".nextButton").toggle();
-                    //                    $(document).find(".playAgainButton").toggle();
-                    // Change the text in the next button to ask if user wants to play again
-                    $(document).find(".nextButton").text("Play Again?");
-                    quizOver = true;
-                }
+            } else if (value == questions[currentQuestion].correctAnswer) {
+                correctAnswers++;
+                currentQuestion++; // Since we have already displayed the first question on DOM ready
+            } else {
+                incorrectAnswers++;
+                currentQuestion++;
             }
+            if (currentQuestion < questions.length) {
+                displayCurrentQuestion();
+            } else {
+                displayScore();
+                //                    $(document).find(".nextButton").toggle();
+                //                    $(document).find(".playAgainButton").toggle();
+                // Change the text in the next button to ask if user wants to play again
+                $(document).find(".nextButton").text("Play Again?");
+                quizOver = true;
+           }
         } else { // quiz is over and clicked the next button (which now displays 'Play Again?'
             quizOver = false;
             $(document).find(".nextButton").text("Next Question");
@@ -97,13 +95,15 @@ function displayCurrentQuestion() {
 function resetQuiz() {
     currentQuestion = 0;
     correctAnswers = 0;
+    incorrectAnswers = 0;
+    noAnswers = 0;
     hideScore();
 }
 
 function displayScore() {
-    $(document).find(".quizContainer > .result").text("You scored: " + correctAnswers + " out of: " + questions.length);
-    $(document).find(".quizContainer > .incorrect").text("You scored: " + correctAnswers + " out of: " + questions.length);
-    $(document).find(".quizContainer > .unanswered").text("You scored: " + correctAnswers + " out of: " + questions.length);
+    $(document).find(".quizContainer > .result").text("Answered Correctly: " + correctAnswers);
+    $(document).find(".quizContainer > .incorrect").text("Answered Incorrectly: " + incorrectAnswers);
+    $(document).find(".quizContainer > .unanswered").text("Unanswered: " + noAnswers);
     $(document).find(".quizContainer > .result").show();
     $(document).find(".quizContainer > .incorrect").show();
     $(document).find(".quizContainer > .unanswered").show();
@@ -111,4 +111,6 @@ function displayScore() {
 
 function hideScore() {
     $(document).find(".result").hide();
+    $(document).find(".incorrect").hide();
+    $(document).find(".unanswered").hide();
 }
