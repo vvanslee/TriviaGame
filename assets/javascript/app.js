@@ -41,13 +41,16 @@ $(document).ready(function () {
             if (value == undefined) {
                 noAnswers++;
                 currentQuestion++; // Since we have already displayed the first question on DOM ready
+
             } else if (value == questions[currentQuestion].correctAnswer) {
                 correctAnswers++;
                 currentQuestion++; // Since we have already displayed the first question on DOM ready
+
             } else {
                 incorrectAnswers++;
                 currentQuestion++;
             }
+
             if (currentQuestion < questions.length) {
                 displayCurrentQuestion();
             } else {
@@ -58,6 +61,7 @@ $(document).ready(function () {
                 $(document).find(".nextButton").text("Play Again?");
                 quizOver = true;
            }
+
         } else { // quiz is over and clicked the next button (which now displays 'Play Again?'
             quizOver = false;
             $(document).find(".nextButton").text("Next Question");
@@ -66,7 +70,6 @@ $(document).ready(function () {
             hideScore();
         }
     });
-
 });
 
 // This displays the current question AND the choices
