@@ -6,6 +6,7 @@ body {
 h1 {
     font-family:'Permanent Marker', cursive;
     text-align: center;
+    font-size: 50px;
 }
 ul {
     list-style: none;
@@ -20,16 +21,18 @@ input[type=radio] {
 }
 /* Quiz Classes */
 .quizContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #F2F3F4;
     opacity: .80;
     border-radius: 80px;
     width: 75%;
-    margin: auto;
     padding-top: 5px;
     -moz-box-shadow: 10px 10px 5px #888;
     -webkit-box-shadow: 10px 10px 5px #888;
     box-shadow: 10px 10px 5px #888;
-    position: relative;
 }
 .nextButton {
     box-shadow: 3px 3px 5px #888;
