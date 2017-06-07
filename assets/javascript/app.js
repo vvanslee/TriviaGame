@@ -32,6 +32,11 @@ var intervalId;
 $(document).ready(function () {
 
     displayStartScreen();
+
+    // I can't get the timer to start when the first question appears
+    // if I put it inside the onclick event, the timer speeds up
+    // with every question. So it starts before you even get to see
+    // the first question, and I'm out of time
     run();
 
     // On clicking next, display the next question

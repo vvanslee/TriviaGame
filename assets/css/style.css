@@ -7,6 +7,7 @@ p {
     font-family:'Permanent Marker', cursive;
     text-align: center;
     font-size: 50px;
+    -webkit-margin-after: 0px;
 }
 ul {
     list-style: none;
