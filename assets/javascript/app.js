@@ -1,23 +1,23 @@
 
 var questions = [{
-    question: "What is the population of Brazil?",
-    choices: ["145 million", "199 million", "182 million", "205 million"],
+    question: "How many planets are in our Solar System?",
+    choices: ["Seven", "Eight", "Nine", "Ten"],
     correctAnswer: 1
 }, {
-    question: "What is 27*14?",
-    choices: ["485", "634", "408", "528"],
+    question: "Which NASA space flight was the last manned mission to the moon?",
+    choices: ["Apollo 15", "Apollo 16", "Apollo 17", "Apollo 18"],
     correctAnswer: 2
 }, {
-    question: "What is the busiest train station in the world?",
-    choices: ["Grand Central, NY", "Shibuya, Tokyo", "Beijing Central, Chine", "Gard du Nord, Paris"],
+    question: "What is the longest continuous time a human has spent in space?",
+    choices: ["365 days", "437 days", "564 days", "739 days"],
     correctAnswer: 1
 }, {
-    question: "What is the longest river?",
-    choices: ["Nile", "Amazon", "Mississippi", "Yangtze"],
-    correctAnswer: 0
+    question: "How many moons are in our Solar System?",
+    choices: ["8 moons", "37 moons", "67 moons", "181 moons"],
+    correctAnswer: 3
 }, {
-    question: "What is the busiest tube station in the London?",
-    choices: ["Waterloo", "Baker Street", "Kings Cross", "Victoria"],
+    question: "What percent of the universe is dark matter?",
+    choices: ["27%", "45%", "73%", "98%"],
     correctAnswer: 0
 }];
 
@@ -26,14 +26,22 @@ var correctAnswers = 0;
 var incorrectAnswers = 0;
 var noAnswers = 0;
 var quizOver = false;
+var number = 90;
+var intervalId;
 
 $(document).ready(function () {
 
-    // Display the first question
-    displayCurrentQuestion();
+    displayStartScreen();
+    run();
 
     // On clicking next, display the next question
     $(this).find(".nextButton").on("click", function () {
+
+        // Display the first question
+        $(document).find(".quizContainer > .question").show();
+        $(document).find(".quizContainer > .choiceList").show();
+        $(document).find(".nextButton").text("Next Question");
+
         if (!quizOver) {
 
             value = $("input[type='radio']:checked").val();
@@ -55,6 +63,7 @@ $(document).ready(function () {
                 displayCurrentQuestion();
             } else {
                 displayScore();
+                stop();
                 //                    $(document).find(".nextButton").toggle();
                 //                    $(document).find(".playAgainButton").toggle();
                 // Change the text in the next button to ask if user wants to play again
@@ -70,9 +79,33 @@ $(document).ready(function () {
             hideScore();
         }
     });
+
 });
 
-// This displays the current question AND the choices
+// FUNCTIONS //
+
+function displayStartScreen() {
+    $(document).find(".question").hide();
+    $(document).find(".choiceList").hide();
+}
+
+function run() {
+    intervalId = setInterval(decrement, 1000);
+}
+
+function decrement() {
+    number--;
+    $(".timer").html(number + " seconds remaining");
+    if (number === 0) {
+        stop();
+        alert("Time's Up!");
+    }
+}
+
+function stop() {
+    clearInterval(intervalId);
+}
+
 function displayCurrentQuestion() {
 
     console.log("In display current Question");
@@ -100,6 +133,9 @@ function resetQuiz() {
     correctAnswers = 0;
     incorrectAnswers = 0;
     noAnswers = 0;
+    number = 90;
+    intervalId;
+    run();
     hideScore();
 }
 

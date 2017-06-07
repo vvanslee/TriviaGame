@@ -3,7 +3,7 @@ body {
     background-repeat: repeat-x repeat-y;
     background-position: right top;
 }
-h1 {
+p {
     font-family:'Permanent Marker', cursive;
     text-align: center;
     font-size: 50px;
@@ -20,6 +20,14 @@ input[type=radio] {
     height: 1.5em;
 }
 /* Quiz Classes */
+.timer {
+    font-family: 'Special Elite', cursive;
+    font-size: 20px;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin: auto;
+}
 .quizContainer {
     position: fixed;
     top: 50%;
