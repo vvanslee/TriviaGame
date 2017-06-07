@@ -24,7 +24,7 @@ var questions = [{
 var currentQuestion = 0;
 var correctAnswers = 0;
 var incorrectAnswers = 0;
-var noAnswers = 0;
+var noAnswers = -1;
 var quizOver = false;
 var number = 90;
 var intervalId;
@@ -64,8 +64,6 @@ $(document).ready(function () {
             } else {
                 displayScore();
                 stop();
-                //                    $(document).find(".nextButton").toggle();
-                //                    $(document).find(".playAgainButton").toggle();
                 // Change the text in the next button to ask if user wants to play again
                 $(document).find(".nextButton").text("Play Again?");
                 quizOver = true;
@@ -87,6 +85,7 @@ $(document).ready(function () {
 function displayStartScreen() {
     $(document).find(".question").hide();
     $(document).find(".choiceList").hide();
+    currentQuestion = -1;
 }
 
 function run() {
@@ -98,6 +97,9 @@ function decrement() {
     $(".timer").html(number + " seconds remaining");
     if (number === 0) {
         stop();
+        displayScore();
+        $(document).find(".nextButton").text("Play Again?");
+        quizOver = true;
         alert("Time's Up!");
     }
 }
